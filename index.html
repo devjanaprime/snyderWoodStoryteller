@@ -16,9 +16,9 @@
       <div id='viewer'>
         <h1>{{ story.title }}</h1>
         <h2>by {{ story.author }}</h2>
-          <h3>{{ selectedScene.caption }}</h3>
-          <img ng-src='{{ selectedScene.panel }}' />
-          <p>{{ selectedScene.beat }}</p>
+        <h2><input type='text' ng-model='selectedScene.caption' size="128"></h2>
+        <p><img ng-click='nextPanel()' img src='panels/{{ selectedScene.panel }}.png'/></p>
+        <p>{{ selectedScene.beat }} ({{ currentSceneIndex+1 }}/15)</p>
         <button ng-click='previousScene()'>Prev</button>
         <button ng-click='nextScene()'>Next</button>
       </div>

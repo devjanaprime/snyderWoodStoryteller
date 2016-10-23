@@ -26,7 +26,7 @@ myApp.controller( 'SnyderWoodSoryteller', [ '$scope', '$http', function( $scope,
     for( var i = 0; i < $scope.beats.length; i++ ) {
       $scope.story.scenes.push({
         beat: $scope.beats[ i ],
-        panel: $scope.panels[ i ],
+        panel: 0,
         caption: 'n/a'
       });
     }
@@ -41,6 +41,23 @@ myApp.controller( 'SnyderWoodSoryteller', [ '$scope', '$http', function( $scope,
     $scope.selectedScene = $scope.story.scenes[ $scope.currentSceneIndex ];
     if( verbose ) console.log( '$selectedScene:', $scope.selectedScene );
   }; // end loadScene
+
+  $scope.nextPanel = function(){
+    $scope.story.scenes[ $scope.currentSceneIndex ].panel++;
+    if( $scope.story.scenes[ $scope.currentSceneIndex ].panel >= $scope.panels.length -1 ){
+      $scope.story.scenes[ $scope.currentSceneIndex ].panel=0;
+    }
+    if( verbose ) console.log( 'in nextPanel' );
+    $scope.loadScene();
+  };// end
+  $scope.previousPanel = function(){
+    $scope.story.scenes[ $scope.currentSceneIndex ].panel--;
+    if( $scope.story.scenes[ $scope.currentSceneIndex ].panel < 0 ){
+      $scope.cstory.scenes[ $scope.currentSceneIndex ].panel = $scope.panels.length -1;
+    }
+    if( verbose ) console.log( 'in previousPanel' );
+    $scope.loadScene();
+  };// end
 
   $scope.nextScene = function(){
     if( $scope.currentSceneIndex < $scope.story.scenes.length - 1 ){
@@ -57,6 +74,11 @@ myApp.controller( 'SnyderWoodSoryteller', [ '$scope', '$http', function( $scope,
     $scope.loadScene();
   };// end
 
+  $scope.saveScene = function(){
+    if( verbose ) console.log( 'in saveScene' );
+    $scope.story.scenes[ $scope.currentSceneIndex ].panel = $scope.selectedScene.panel;
+    $scope.story.scenes[ $scope.currentSceneIndex ].panel = $scope.selectedScene.caption;
+  }; // end saveScene
   //spin it up
   $scope.init();
 }]); // end container
