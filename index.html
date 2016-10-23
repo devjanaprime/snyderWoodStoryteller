@@ -10,6 +10,8 @@
     <div ng-controller='SnyderWoodSoryteller'>
       <div id='creator'>
         <h2>Creator</h2>
+        <input type="text" ng-model='story.title' placeholder="title">
+        <input type="text" ng-model='story.author' placeholder="author">
       </div>
       <div id='viewer'>
         <h1>{{ story.title }}</h1>
