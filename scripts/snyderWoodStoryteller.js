@@ -42,6 +42,11 @@ myApp.controller( 'SnyderWoodSoryteller', [ '$scope', '$http', function( $scope,
     if( verbose ) console.log( '$selectedScene:', $scope.selectedScene );
   }; // end loadScene
 
+  $scope.loadStoryLocal = function(){
+    if( verbose ) console.log( 'in loadStory' );
+    $scope.story = JSON.parse( localStorage.story );
+  }; // end loadStory
+
   $scope.nextPanel = function(){
     $scope.story.scenes[ $scope.currentSceneIndex ].panel++;
     if( $scope.story.scenes[ $scope.currentSceneIndex ].panel >= $scope.panels.length -1 ){
@@ -64,6 +69,7 @@ myApp.controller( 'SnyderWoodSoryteller', [ '$scope', '$http', function( $scope,
       $scope.currentSceneIndex++;
     }
     if( verbose ) console.log( 'in nextScene:', $scope.currentSceneIndex );
+    $scope.saveStoryLocal();
     $scope.loadScene();
   };// end
   $scope.previousScene = function(){
@@ -71,6 +77,7 @@ myApp.controller( 'SnyderWoodSoryteller', [ '$scope', '$http', function( $scope,
       $scope.currentSceneIndex--;
     }
     if( verbose ) console.log( 'in previousScene:', $scope.currentSceneIndex );
+    $scope.saveStoryLocal();
     $scope.loadScene();
   };// end
 
@@ -79,6 +86,13 @@ myApp.controller( 'SnyderWoodSoryteller', [ '$scope', '$http', function( $scope,
     $scope.story.scenes[ $scope.currentSceneIndex ].panel = $scope.selectedScene.panel;
     $scope.story.scenes[ $scope.currentSceneIndex ].panel = $scope.selectedScene.caption;
   }; // end saveScene
+
+  $scope.saveStoryLocal = function(){
+    if( verbose ) console.log( 'in saveStory' );
+    localStorage.story = JSON.stringify( $scope.story );
+  }; // end saveStory
   //spin it up
   $scope.init();
+  // temp loadStoryLocal
+  $scope.loadStoryLocal();
 }]); // end container
