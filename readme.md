@@ -1,4 +1,4 @@
-THis was a sketch, I've moved this idea over to a different project in vanilla JS: []()
+This was a sketch, I've moved this idea over to a different project in vanilla JS: [https://github.com/devjanaprime/snyderWoodStoryMaker](https://github.com/devjanaprime/snyderWoodStoryMaker)
 
 Snyder Wood Storyteller
 =======================
