@@ -1,3 +1,5 @@
+THis was a sketch, I've moved this idea over to a different project in vanilla JS: []()
+
 Snyder Wood Storyteller
 =======================
 
